@@ -1,110 +1,188 @@
-import { Building2, FileText, Image as ImageIcon, Mail, MapPin, Phone, Sparkles, Bookmark } from 'lucide-react'
+import Link from 'next/link'
+import { Building2, Phone, Mail, MapPin, Clock, MessageSquare, ArrowRight, Send } from 'lucide-react'
 import { NavbarShell } from '@/components/shared/navbar-shell'
 import { Footer } from '@/components/shared/footer'
 import { SITE_CONFIG } from '@/lib/site-config'
-import { getFactoryState } from '@/design/factory/get-factory-state'
-import { getProductKind } from '@/design/factory/get-product-kind'
-import { CONTACT_PAGE_OVERRIDE_ENABLED, ContactPageOverride } from '@/overrides/contact-page'
+import { siteIdentity } from '@/config/site.identity'
 
-function getTone(kind: ReturnType<typeof getProductKind>) {
-  if (kind === 'directory') {
-    return {
-      shell: 'bg-[#f8fbff] text-slate-950',
-      panel: 'border border-slate-200 bg-white',
-      soft: 'border border-slate-200 bg-slate-50',
-      muted: 'text-slate-600',
-      action: 'bg-slate-950 text-white hover:bg-slate-800',
-    }
-  }
-  if (kind === 'editorial') {
-    return {
-      shell: 'bg-[#fbf6ee] text-[#241711]',
-      panel: 'border border-[#dcc8b7] bg-[#fffdfa]',
-      soft: 'border border-[#e6d6c8] bg-[#fff4e8]',
-      muted: 'text-[#6e5547]',
-      action: 'bg-[#241711] text-[#fff1e2] hover:bg-[#3a241b]',
-    }
-  }
-  if (kind === 'visual') {
-    return {
-      shell: 'bg-[#07101f] text-white',
-      panel: 'border border-white/10 bg-white/6',
-      soft: 'border border-white/10 bg-white/5',
-      muted: 'text-slate-300',
-      action: 'bg-[#8df0c8] text-[#07111f] hover:bg-[#77dfb8]',
-    }
-  }
-  return {
-    shell: 'bg-[#f7f1ea] text-[#261811]',
-    panel: 'border border-[#ddcdbd] bg-[#fffaf4]',
-    soft: 'border border-[#e8dbce] bg-[#f3e8db]',
-    muted: 'text-[#71574a]',
-    action: 'bg-[#5b2b3b] text-[#fff0f5] hover:bg-[#74364b]',
-  }
-}
+const contactMethods = [
+  {
+    icon: Phone,
+    title: 'Call Us',
+    description: 'Speak directly with our support team during business hours.',
+    value: '+1 (555) 123-4567',
+    action: 'tel:+15551234567',
+  },
+  {
+    icon: Mail,
+    title: 'Email Us',
+    description: 'Send us a detailed message and we will respond within 24 hours.',
+    value: siteIdentity.contactEmail,
+    action: `mailto:${siteIdentity.contactEmail}`,
+  },
+  {
+    icon: MapPin,
+    title: 'Visit Us',
+    description: 'Stop by our office for in-person consultations and meetings.',
+    value: '123 Business Ave, Suite 100',
+    action: '#',
+  },
+]
+
+const supportTopics = [
+  {
+    title: 'Business Listings',
+    description: 'Questions about creating, editing, or managing your business listings.',
+  },
+  {
+    title: 'Account Support',
+    description: 'Help with login, profile settings, and account management.',
+  },
+  {
+    title: 'Partnerships',
+    description: 'Inquiries about advertising, sponsorships, and business partnerships.',
+  },
+  {
+    title: 'Technical Issues',
+    description: 'Report bugs, errors, or technical problems with the platform.',
+  },
+]
 
 export default function ContactPage() {
-  if (CONTACT_PAGE_OVERRIDE_ENABLED) {
-    return <ContactPageOverride />
-  }
-
-  const { recipe } = getFactoryState()
-  const productKind = getProductKind(recipe)
-  const tone = getTone(productKind)
-  const lanes =
-    productKind === 'directory'
-      ? [
-          { icon: Building2, title: 'Business onboarding', body: 'Add listings, verify operational details, and bring your business surface live quickly.' },
-          { icon: Phone, title: 'Partnership support', body: 'Talk through bulk publishing, local growth, and operational setup questions.' },
-          { icon: MapPin, title: 'Coverage requests', body: 'Need a new geography or category lane? We can shape the directory around it.' },
-        ]
-      : productKind === 'editorial'
-        ? [
-            { icon: FileText, title: 'Editorial submissions', body: 'Pitch essays, columns, and long-form ideas that fit the publication.' },
-            { icon: Mail, title: 'Newsletter partnerships', body: 'Coordinate sponsorships, collaborations, and issue-level campaigns.' },
-            { icon: Sparkles, title: 'Contributor support', body: 'Get help with voice, formatting, and publication workflow questions.' },
-          ]
-        : productKind === 'visual'
-          ? [
-              { icon: ImageIcon, title: 'Creator collaborations', body: 'Discuss gallery launches, creator features, and visual campaigns.' },
-              { icon: Sparkles, title: 'Licensing and use', body: 'Reach out about usage rights, commercial requests, and visual partnerships.' },
-              { icon: Mail, title: 'Media kits', body: 'Request creator decks, editorial support, or visual feature placement.' },
-            ]
-          : [
-              { icon: Bookmark, title: 'Collection submissions', body: 'Suggest resources, boards, and links that deserve a place in the library.' },
-              { icon: Mail, title: 'Resource partnerships', body: 'Coordinate curation projects, reference pages, and link programs.' },
-              { icon: Sparkles, title: 'Curator support', body: 'Need help organizing shelves, collections, or profile-connected boards?' },
-            ]
-
   return (
-    <div className={`min-h-screen ${tone.shell}`}>
+    <div className="min-h-screen bg-[#f8fbff] text-[#061e29]">
       <NavbarShell />
       <main className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <section className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] opacity-70">Contact {SITE_CONFIG.name}</p>
-            <h1 className="mt-4 text-5xl font-semibold tracking-[-0.05em]">A support page that matches the product, not a generic contact form.</h1>
-            <p className={`mt-5 max-w-2xl text-sm leading-8 ${tone.muted}`}>Tell us what you are trying to publish, fix, or launch. We will route it through the right lane instead of forcing every request into the same support bucket.</p>
-            <div className="mt-8 space-y-4">
-              {lanes.map((lane) => (
-                <div key={lane.title} className={`rounded-[1.6rem] p-5 ${tone.soft}`}>
-                  <lane.icon className="h-5 w-5" />
-                  <h2 className="mt-3 text-xl font-semibold">{lane.title}</h2>
-                  <p className={`mt-2 text-sm leading-7 ${tone.muted}`}>{lane.body}</p>
-                </div>
-              ))}
-            </div>
+        {/* Hero Section */}
+        <section className="mb-12 text-center">
+          <h1 className="text-5xl font-semibold tracking-[-0.05em] sm:text-6xl">Get in Touch</h1>
+          <p className="mt-4 max-w-2xl mx-auto text-base leading-8 text-slate-600">
+            Have questions or need assistance? We're here to help you succeed with your business listing journey.
+          </p>
+        </section>
+
+        {/* Contact Methods */}
+        <section className="mb-12">
+          <div className="grid gap-6 md:grid-cols-3">
+            {contactMethods.map((method) => {
+              const Icon = method.icon
+              return (
+                <a
+                  key={method.title}
+                  href={method.action}
+                  className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1"
+                >
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#1d546d]/10 text-[#1d546d] group-hover:bg-[#1d546d] group-hover:text-white transition-colors">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="mt-4 text-lg font-semibold">{method.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">{method.description}</p>
+                  <p className="mt-3 text-sm font-medium text-[#1d546d]">{method.value}</p>
+                </a>
+              )
+            })}
+          </div>
+        </section>
+
+        {/* Contact Form & Info */}
+        <section className="mb-12 grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+          {/* Contact Form */}
+          <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+            <h2 className="text-2xl font-semibold">Send us a message</h2>
+            <p className="mt-2 text-sm text-slate-600">Fill out the form below and we'll get back to you within 24 hours.</p>
+            <form className="mt-6 grid gap-4">
+              <div className="grid gap-4 md:grid-cols-2">
+                <input
+                  className="h-12 rounded-xl border border-slate-200 bg-white px-4 text-sm focus:outline-none focus:ring-2 focus:ring-[#1d546d] focus:border-transparent"
+                  placeholder="Your name"
+                />
+                <input
+                  className="h-12 rounded-xl border border-slate-200 bg-white px-4 text-sm focus:outline-none focus:ring-2 focus:ring-[#1d546d] focus:border-transparent"
+                  placeholder="Email address"
+                />
+              </div>
+              <input
+                className="h-12 rounded-xl border border-slate-200 bg-white px-4 text-sm focus:outline-none focus:ring-2 focus:ring-[#1d546d] focus:border-transparent"
+                placeholder="Subject"
+              />
+              <select className="h-12 rounded-xl border border-slate-200 bg-white px-4 text-sm focus:outline-none focus:ring-2 focus:ring-[#1d546d] focus:border-transparent text-slate-600">
+                <option value="">Select a topic</option>
+                <option value="listings">Business Listings</option>
+                <option value="account">Account Support</option>
+                <option value="partnership">Partnerships</option>
+                <option value="technical">Technical Issues</option>
+                <option value="other">Other</option>
+              </select>
+              <textarea
+                className="min-h-[180px] rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#1d546d] focus:border-transparent"
+                placeholder="Tell us more about your inquiry..."
+              />
+              <button
+                type="submit"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-[#1d546d] px-6 text-sm font-semibold text-white hover:bg-[#5f9598] transition-colors"
+              >
+                <Send className="h-4 w-4" />
+                Send Message
+              </button>
+            </form>
           </div>
 
-          <div className={`rounded-[2rem] p-7 ${tone.panel}`}>
-            <h2 className="text-2xl font-semibold">Send a message</h2>
-            <form className="mt-6 grid gap-4">
-              <input className="h-12 rounded-xl border border-current/10 bg-transparent px-4 text-sm" placeholder="Your name" />
-              <input className="h-12 rounded-xl border border-current/10 bg-transparent px-4 text-sm" placeholder="Email address" />
-              <input className="h-12 rounded-xl border border-current/10 bg-transparent px-4 text-sm" placeholder="What do you need help with?" />
-              <textarea className="min-h-[180px] rounded-2xl border border-current/10 bg-transparent px-4 py-3 text-sm" placeholder="Share the full context so we can respond with the right next step." />
-              <button type="submit" className={`inline-flex h-12 items-center justify-center rounded-full px-6 text-sm font-semibold ${tone.action}`}>Send message</button>
-            </form>
+          {/* Office Hours & Support Topics */}
+          <div className="space-y-6">
+            {/* Office Hours */}
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+              <div className="flex items-center gap-3 mb-4">
+                <Clock className="h-5 w-5 text-[#1d546d]" />
+                <h3 className="text-lg font-semibold">Office Hours</h3>
+              </div>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between">
+                  <span className="text-slate-600">Monday - Friday</span>
+                  <span className="font-medium">9:00 AM - 6:00 PM</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-600">Saturday</span>
+                  <span className="font-medium">10:00 AM - 4:00 PM</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-600">Sunday</span>
+                  <span className="font-medium">Closed</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Support Topics */}
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+              <h3 className="text-lg font-semibold mb-4">Common Topics</h3>
+              <div className="space-y-3">
+                {supportTopics.map((topic) => (
+                  <div key={topic.title} className="rounded-lg border border-slate-100 bg-slate-50 p-4">
+                    <h4 className="text-sm font-semibold">{topic.title}</h4>
+                    <p className="mt-1 text-xs text-slate-600">{topic.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Teaser */}
+        <section className="rounded-2xl border border-[#1d546d]/20 bg-gradient-to-br from-[#1d546d] to-[#5f9598] p-8 text-white">
+          <div className="flex items-center justify-between gap-8">
+            <div>
+              <h2 className="text-2xl font-semibold">Can't find what you're looking for?</h2>
+              <p className="mt-2 text-base leading-7 text-white/90">
+                Check out our Help Center for comprehensive guides and frequently asked questions.
+              </p>
+            </div>
+            <Link
+              href="/help"
+              className="shrink-0 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#1d546d] hover:bg-white/90 transition-colors"
+            >
+              <MessageSquare className="h-4 w-4" />
+              Visit Help Center
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </section>
       </main>

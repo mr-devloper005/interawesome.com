@@ -13,7 +13,7 @@ export const siteTaskDefinitions = [
     route: '/classifieds',
     description: 'Local offers, jobs, and deals.',
     contentType: 'classified',
-    enabled: true,
+    enabled: false,
   },
   {
     key: 'article',
@@ -21,7 +21,7 @@ export const siteTaskDefinitions = [
     route: '/articles',
     description: 'Insights, blogs, and long-form content.',
     contentType: 'article',
-    enabled: true,
+    enabled: false,
   },
   {
     key: 'image',
@@ -29,7 +29,7 @@ export const siteTaskDefinitions = [
     route: '/images',
     description: 'Galleries and media-first posts.',
     contentType: 'image',
-    enabled: true,
+    enabled: false,
   },
   {
     key: 'profile',
@@ -37,7 +37,7 @@ export const siteTaskDefinitions = [
     route: '/profile',
     description: 'Creator and business profiles.',
     contentType: 'profile',
-    enabled: true,
+    enabled: false,
   },
   {
     key: 'sbm',
@@ -45,7 +45,7 @@ export const siteTaskDefinitions = [
     route: '/sbm',
     description: 'Curated bookmarks and resources.',
     contentType: 'social',
-    enabled: true,
+    enabled: false,
   },
   {
     key: 'comment',
@@ -53,7 +53,7 @@ export const siteTaskDefinitions = [
     route: '/blog',
     description: 'Commentary and response posts.',
     contentType: 'article',
-    enabled: true,
+    enabled: false,
   },
   {
     key: 'pdf',
@@ -61,7 +61,7 @@ export const siteTaskDefinitions = [
     route: '/pdf',
     description: 'PDF resources and downloads.',
     contentType: 'pdf',
-    enabled: true,
+    enabled: false,
   },
   {
     key: 'org',
@@ -69,7 +69,7 @@ export const siteTaskDefinitions = [
     route: '/team',
     description: 'Organization profiles and directories.',
     contentType: 'profile',
-    enabled: true,
+    enabled: false,
   },
 ] as const
 
