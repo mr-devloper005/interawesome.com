@@ -1,8 +1,9 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowRight, Globe, Mail, MapPin, Phone, ShieldCheck, Tag, Star, Share2, Heart, Clock, Facebook, ExternalLink, MessageSquare, ChevronRight } from 'lucide-react'
+import { ArrowRight, Globe, Mail, MapPin, Phone, Tag, Star, Share2, Heart, Clock, ExternalLink, ChevronRight } from 'lucide-react'
 import { ContentImage } from '@/components/shared/content-image'
+import { RichContent, formatRichHtml } from '@/components/shared/rich-content'
 import { SchemaJsonLd } from '@/components/seo/schema-jsonld'
 import { TaskPostCard } from '@/components/shared/task-post-card'
 import { Button } from '@/components/ui/button'
@@ -82,8 +83,6 @@ export function DirectoryTaskDetailPage({
     email: email || undefined,
   }
 
-  const updatedDate = post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '21 Apr 2026'
-
   return (
     <div className="min-h-screen bg-white text-slate-950">
       <SchemaJsonLd data={schemaPayload} />
@@ -96,8 +95,8 @@ export function DirectoryTaskDetailPage({
         <div className="mb-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <div className="flex flex-col gap-6 md:flex-row md:items-start md:gap-8">
             {/* Logo */}
-            <div className="flex shrink-0 items-center justify-center overflow-hidden rounded-xl border border-slate-200 bg-slate-50 p-4 md:h-24 md:w-24">
-              <ContentImage src={logo} alt={post.title} width={80} height={80} className="h-16 w-16 object-contain md:h-20 md:w-20" />
+            <div className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-slate-200 bg-slate-50">
+              <ContentImage src={logo} alt={post.title} width={96} height={96} className="h-full w-full object-cover" />
             </div>
 
             {/* Company Info */}
@@ -112,10 +111,6 @@ export function DirectoryTaskDetailPage({
                   ))}
                   <span className="ml-2 text-sm text-slate-600">4.5 (12 Ratings)</span>
                 </div>
-                <Button variant="outline" size="sm" className="h-8 text-xs">
-                  <MessageSquare className="mr-1 h-3 w-3" />
-                  Add Review
-                </Button>
               </div>
 
               {/* Category & Location */}
@@ -145,9 +140,6 @@ export function DirectoryTaskDetailPage({
                     Website
                   </a>
                 )}
-                <Button className="rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-blue-700">
-                  Get Quote
-                </Button>
               </div>
             </div>
           </div>
@@ -183,7 +175,10 @@ export function DirectoryTaskDetailPage({
             <div className="rounded-2xl border border-slate-200 bg-white p-6">
               <h2 className="text-xl font-semibold text-slate-950">ABOUT {post.title.toUpperCase()}</h2>
               <h3 className="mt-2 text-lg font-medium text-slate-700">{post.title}</h3>
-              <p className="mt-4 text-sm leading-7 text-slate-600">{description}</p>
+              <RichContent
+                html={formatRichHtml(description, `${post.title} details coming soon.`)}
+                className="mt-4 text-sm text-slate-600 prose-sm"
+              />
             </div>
 
             {/* Why Choose Section */}
@@ -234,10 +229,6 @@ export function DirectoryTaskDetailPage({
                     Website
                   </a>
                 )}
-                <Button variant="outline" size="sm" className="rounded-lg">
-                  <Facebook className="mr-2 h-4 w-4" />
-                  Facebook
-                </Button>
               </div>
             </div>
 
@@ -320,19 +311,6 @@ export function DirectoryTaskDetailPage({
               </div>
             )}
 
-            {/* Updated By */}
-            <div className="rounded-2xl border border-slate-200 bg-white p-6">
-              <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">UPDATED BY</p>
-              <div className="mt-3 flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100">
-                  <ShieldCheck className="h-5 w-5 text-slate-500" />
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-slate-950">{post.title}</p>
-                  <p className="text-xs text-slate-500">On {updatedDate}</p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
