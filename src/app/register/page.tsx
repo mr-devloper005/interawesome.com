@@ -14,14 +14,14 @@ import { REGISTER_PAGE_OVERRIDE_ENABLED, RegisterPageOverride } from '@/override
 function getRegisterConfig(kind: ReturnType<typeof getProductKind>) {
   if (kind === 'directory') {
     return {
-      shell: 'bg-[#f8fbff] text-slate-950',
-      panel: 'border border-slate-200 bg-white',
-      side: 'border border-slate-200 bg-slate-50',
+      shell: 'bg-[#f8fbff] text-[#061e29]',
+      panel: 'border border-[#061e29]/10 bg-white',
+      side: 'border border-[#061e29]/10 bg-slate-50',
       muted: 'text-slate-600',
-      action: 'bg-slate-950 text-white hover:bg-slate-800',
+      action: 'bg-[#1d546d] text-[#f3f4f4] hover:bg-[#5f9598]',
       icon: Building2,
-      title: 'Create a business-ready account',
-      body: 'List services, manage locations, and activate trust signals with a proper directory workflow.',
+      title: 'Create your business listing account',
+      body: 'List your services, manage locations, activate trust signals, and reach buyers through our structured directory platform.',
     }
   }
   if (kind === 'editorial') {

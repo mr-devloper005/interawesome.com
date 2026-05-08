@@ -29,10 +29,7 @@ const footerLinks = {
   platform: allPlatformLinks,
   company: [
     { name: 'About', href: '/about' },
-    { name: 'Team', href: '/team' },
     { name: 'Careers', href: '/careers' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Press', href: '/press' },
   ],
   resources: [
     { name: 'Help Center', href: '/help' },
@@ -42,7 +39,6 @@ const footerLinks = {
     { name: 'Privacy', href: '/privacy' },
     { name: 'Terms', href: '/terms' },
     { name: 'Cookies', href: '/cookies' },
-    { name: 'Licenses', href: '/licenses' },
   ],
 }
 
@@ -178,7 +174,7 @@ export function Footer() {
     <footer className="border-t border-[#0a2a38] bg-[#061e29] text-[#f3f4f4]">
       <div className="h-px w-full bg-gradient-to-r from-transparent via-[#5f9598]/60 to-transparent" aria-hidden />
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-[1.25fr_0.9fr_0.9fr]">
+        <div className="grid gap-10 md:grid-cols-[1.25fr_0.8fr_0.8fr_0.8fr]">
           <div>
             <Link href="/" className="flex items-center gap-3">
               <div className="h-11 w-11 overflow-hidden rounded-xl border border-white/12 bg-[#0c2a36] p-1">
@@ -191,7 +187,7 @@ export function Footer() {
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-7 text-slate-300">{SITE_CONFIG.description}</p>
           </div>
-          {(['resources', 'legal'] as const).map((section) => (
+          {(['company', 'resources', 'legal'] as const).map((section) => (
             <div key={section}>
               <h3 className="text-xs font-semibold uppercase tracking-[0.22em] text-[#5f9598]">{section}</h3>
               <ul className="mt-5 space-y-3 text-sm text-slate-300">

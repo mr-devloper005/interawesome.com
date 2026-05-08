@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Bell, Bookmark, ChevronDown, LayoutGrid, LogOut, Plus, Settings, User, FileText, Building2, Tag, Image as ImageIcon } from 'lucide-react'
+import { Bookmark, ChevronDown, LayoutGrid, LogOut, Plus, Settings, User, FileText, Building2, Tag, Image as ImageIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -70,57 +70,7 @@ export function NavbarAuthControls({ tone = 'light' }: { tone?: NavbarAuthTone }
         </DropdownMenuContent>
       </DropdownMenu>
 
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button
-            variant="ghost"
-            size="icon"
-            className={cn(
-              'relative rounded-full',
-              isDark ? 'text-slate-200 hover:bg-white/10 hover:text-white' : 'text-muted-foreground hover:bg-muted hover:text-foreground',
-            )}
-          >
-            <Bell className="h-5 w-5" />
-            <Badge className="absolute -right-1 -top-1 h-5 w-5 rounded-full bg-[#5f9598] p-0 text-[10px] text-[#061e29]">
-              3
-            </Badge>
-            <span className="sr-only">Notifications</span>
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-80 border-border bg-card">
-          <div className="flex items-center justify-between border-b border-border p-3">
-            <span className="text-sm font-semibold text-foreground">Notifications</span>
-            <Button
-              variant="ghost"
-              size="sm"
-              className="h-auto p-0 text-xs text-muted-foreground"
-              onClick={() =>
-                toast({
-                  title: 'Notifications cleared',
-                  description: 'You are all caught up.',
-                })
-              }
-            >
-              Mark all read
-            </Button>
-          </div>
-          <div className="max-h-80 overflow-y-auto">
-            <DropdownMenuItem className="flex flex-col items-start gap-1 p-3">
-              <span className="text-sm">Your article was published</span>
-              <span className="text-xs text-muted-foreground">2 minutes ago</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem className="flex flex-col items-start gap-1 p-3">
-              <span className="text-sm">New follower: James Chen</span>
-              <span className="text-xs text-[#7f646b]">1 hour ago</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem className="flex flex-col items-start gap-1 p-3">
-              <span className="text-sm">Your listing is expiring soon</span>
-              <span className="text-xs text-muted-foreground">3 hours ago</span>
-            </DropdownMenuItem>
-          </div>
-        </DropdownMenuContent>
-      </DropdownMenu>
-
+      
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
@@ -148,19 +98,6 @@ export function NavbarAuthControls({ tone = 'light' }: { tone?: NavbarAuthTone }
               <span className="text-xs text-muted-foreground">{user?.email}</span>
             </div>
           </div>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem asChild>
-            <Link href="/dashboard/saved">
-              <Bookmark className="mr-2 h-4 w-4" />
-              Saved Items
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <Link href="/settings">
-              <Settings className="mr-2 h-4 w-4" />
-              Settings
-            </Link>
-          </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={logout} className="text-destructive">
             <LogOut className="mr-2 h-4 w-4" />

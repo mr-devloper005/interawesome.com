@@ -1,9 +1,8 @@
 ﻿import Link from 'next/link'
 import { NavbarShell } from '@/components/shared/navbar-shell'
 import { Footer } from '@/components/shared/footer'
-import { Building2, FileText, MessageSquare, Phone, Mail, ArrowRight, Search, BookOpen, ShieldCheck, Zap } from 'lucide-react'
+import { Building2, FileText, MessageSquare, Phone, ArrowRight, Search, BookOpen, ShieldCheck, Zap } from 'lucide-react'
 import { SITE_CONFIG } from '@/lib/site-config'
-import { siteIdentity } from '@/config/site.identity'
 
 const helpCategories = [
   {
@@ -127,15 +126,6 @@ export default function HelpPage() {
               <p className="mt-4 text-base leading-7 text-white/90">
                 Our support team is here to assist you with any questions or issues you may have.
               </p>
-              <div className="mt-6 space-y-4">
-                <a
-                  href={`mailto:${siteIdentity.contactEmail}`}
-                  className="flex items-center gap-3 text-white/90 hover:text-white transition-colors"
-                >
-                  <Mail className="h-5 w-5" />
-                  {siteIdentity.contactEmail}
-                </a>
-              </div>
             </div>
             <div className="flex items-center justify-end">
               <Link
