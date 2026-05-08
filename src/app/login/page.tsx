@@ -14,14 +14,14 @@ import { LOGIN_PAGE_OVERRIDE_ENABLED, LoginPageOverride } from '@/overrides/logi
 function getLoginConfig(kind: ReturnType<typeof getProductKind>) {
   if (kind === 'directory') {
     return {
-      shell: 'bg-[#f8fbff] text-slate-950',
-      panel: 'border border-slate-200 bg-white',
-      side: 'border border-slate-200 bg-slate-50',
+      shell: 'bg-[#f8fbff] text-[#061e29]',
+      panel: 'border border-[#061e29]/10 bg-white',
+      side: 'border border-[#061e29]/10 bg-slate-50',
       muted: 'text-slate-600',
-      action: 'bg-slate-950 text-white hover:bg-slate-800',
+      action: 'bg-[#1d546d] text-[#f3f4f4] hover:bg-[#5f9598]',
       icon: Building2,
-      title: 'Access your business dashboard',
-      body: 'Manage listings, verification details, contact info, and local discovery surfaces from one place.',
+      title: 'Access your business listing dashboard',
+      body: 'Manage your business listings, contact information, verification details, and discovery presence from one central dashboard.',
     }
   }
   if (kind === 'editorial') {

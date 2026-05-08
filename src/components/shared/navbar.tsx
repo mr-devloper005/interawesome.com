@@ -107,7 +107,7 @@ export function Navbar() {
 
           <div className="order-first min-w-0 lg:order-none lg:flex lg:justify-center">
             <Link
-              href="/search"
+              href="/listing"
               className="ia-nav-pill flex w-full items-center gap-3 px-4 py-2.5 text-sm text-slate-200/85 lg:max-w-[380px]"
             >
               <Search className="h-4 w-4 shrink-0 text-[#5f9598]" />
@@ -147,7 +147,7 @@ export function Navbar() {
           <div className="border-t border-[#0a2a38] bg-[#071f2b] pb-4">
             <div className="space-y-2 px-4 py-4">
               <Link
-                href="/search"
+                href="/listing"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="mb-3 flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-slate-100"
               >
@@ -260,7 +260,7 @@ export function Navbar() {
           ) : null}
 
           <Button variant="ghost" size="icon" asChild className="hidden rounded-full md:flex">
-            <Link href="/search">
+            <Link href="/listing">
               <Search className="h-5 w-5" />
               <span className="sr-only">Search</span>
             </Link>
@@ -298,9 +298,9 @@ export function Navbar() {
       {isMobileMenuOpen && (
         <div className={style.mobile}>
           <div className="space-y-2 px-4 py-4">
-            <Link href="/search" onClick={() => setIsMobileMenuOpen(false)} className="mb-3 flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-3 text-sm font-semibold text-muted-foreground">
+            <Link href="/listing" onClick={() => setIsMobileMenuOpen(false)} className="mb-3 flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-3 text-sm font-semibold text-muted-foreground">
               <Search className="h-4 w-4" />
-              Search the site
+              Search site
             </Link>
             {mobileNavigation.map((item) => {
               const isActive = pathname.startsWith(item.href)

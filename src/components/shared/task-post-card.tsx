@@ -1,3 +1,6 @@
+'use client'
+
+import { useEffect, useState } from 'react'
 import { ContentImage } from '@/components/shared/content-image'
 import Link from 'next/link'
 import { ArrowUpRight, ExternalLink, FileText, Mail, MapPin, Tag } from 'lucide-react'
@@ -110,9 +113,13 @@ export function TaskPostCard({
   const altText = `${post.title} ${category} ${variant === 'listing' ? 'business listing' : variant} image`
   const imageSizes = variant === 'article' ? '(max-width: 640px) 90vw, (max-width: 1024px) 48vw, 420px' : variant === 'image' ? '(max-width: 640px) 82vw, (max-width: 1024px) 34vw, 320px' : '(max-width: 640px) 85vw, (max-width: 1024px) 42vw, 340px'
 
-  const { recipe } = getFactoryState()
-  const isDirectoryProduct = recipe.homeLayout === 'listing-home' || recipe.homeLayout === 'classified-home'
-  const isDirectorySurface = isDirectoryProduct && (variant === 'listing' || variant === 'classified' || variant === 'profile')
+  const [isDirectorySurface, setIsDirectorySurface] = useState(false)
+
+  useEffect(() => {
+    const { recipe } = getFactoryState()
+    const isDirectoryProduct = recipe.homeLayout === 'listing-home' || recipe.homeLayout === 'classified-home'
+    setIsDirectorySurface(isDirectoryProduct && (variant === 'listing' || variant === 'classified' || variant === 'profile'))
+  }, [variant])
 
   if (isDirectorySurface) {
     const cardTone = {

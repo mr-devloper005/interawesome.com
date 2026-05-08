@@ -1,9 +1,8 @@
 ﻿import Link from 'next/link'
 import { NavbarShell } from '@/components/shared/navbar-shell'
 import { Footer } from '@/components/shared/footer'
-import { ShieldCheck, Eye, Lock, UserCheck, Database, ArrowRight, Mail } from 'lucide-react'
+import { ShieldCheck, Eye, Lock, UserCheck, Database, ArrowRight } from 'lucide-react'
 import { SITE_CONFIG } from '@/lib/site-config'
-import { siteIdentity } from '@/config/site.identity'
 
 const dataCategories = [
   {
@@ -145,13 +144,6 @@ export default function PrivacyPage() {
               <p className="mt-2 text-base leading-7 text-white/90">
                 If you have questions about this privacy policy or how we handle your data, please contact our privacy team.
               </p>
-              <a
-                href={`mailto:${siteIdentity.contactEmail}`}
-                className="mt-4 inline-flex items-center gap-2 text-white/90 hover:text-white transition-colors"
-              >
-                <Mail className="h-5 w-5" />
-                {siteIdentity.contactEmail}
-              </a>
             </div>
             <div className="flex items-center justify-end">
               <Link
