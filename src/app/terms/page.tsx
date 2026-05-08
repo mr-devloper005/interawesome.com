@@ -1,9 +1,8 @@
 import Link from 'next/link'
 import { NavbarShell } from '@/components/shared/navbar-shell'
 import { Footer } from '@/components/shared/footer'
-import { FileText, Shield, AlertTriangle, Users, Ban, ArrowRight, Mail } from 'lucide-react'
+import { FileText, Shield, AlertTriangle, Users, Ban, ArrowRight } from 'lucide-react'
 import { SITE_CONFIG } from '@/lib/site-config'
-import { siteIdentity } from '@/config/site.identity'
 
 const termCategories = [
   {
@@ -148,13 +147,6 @@ export default function TermsPage() {
               <p className="mt-2 text-base leading-7 text-white/90">
                 If you have questions about these terms or need clarification, please contact our legal team.
               </p>
-              <a
-                href={`mailto:${siteIdentity.contactEmail}`}
-                className="mt-4 inline-flex items-center gap-2 text-white/90 hover:text-white transition-colors"
-              >
-                <Mail className="h-5 w-5" />
-                {siteIdentity.contactEmail}
-              </a>
             </div>
             <div className="flex items-center justify-end">
               <Link

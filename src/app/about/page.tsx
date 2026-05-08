@@ -3,31 +3,23 @@ import { PageShell } from "@/components/shared/page-shell";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { mockTeamMembers } from "@/data/mock-data";
 import { SITE_CONFIG } from "@/lib/site-config";
 
-const highlights = [
-  { label: "Creators onboarded", value: "12k+" },
-  { label: "Bookmarks shared", value: "180k" },
-  { label: "Listings published", value: "8.6k" },
-];
-
 const values = [
-  { title: "Curated by people", description: "We believe trusted recommendations beat endless feeds." },
-  { title: "Designed for focus", description: "Clear, calm UI helps you find the next best resource fast." },
-  { title: "Built to share", description: "Collections make collaboration and knowledge flow effortless." },
+  { title: "Structured for clarity", description: "Every listing is organized for quick scanning, so visitors can compare operators and make confident next steps." },
+  { title: "Built for discovery", description: "Categories, location context, and supporting content types make browsing smoother from the first visit." },
+  { title: "Designed for trust", description: "Clean layout, clear information hierarchy, and consistent formatting help buyers and browsers feel at ease." },
 ];
 
 export default function AboutPage() {
   return (
     <PageShell
       title={`About ${SITE_CONFIG.name}`}
-      description={`${SITE_CONFIG.name} is a modern platform for creators, communities, and curated business discovery.`}
+      description={`${SITE_CONFIG.name} is a business listing platform for discovering services, companies, and local opportunities with structured browsing.`}
       actions={
         <>
           <Button variant="outline" asChild>
-            <Link href="/team">Meet the Team</Link>
+            <Link href="/listings">Browse Listings</Link>
           </Button>
           <Button asChild>
             <Link href="/contact">Contact Us</Link>
@@ -40,20 +32,16 @@ export default function AboutPage() {
           <CardContent className="space-y-4 p-6">
             <Badge variant="secondary">Our Story</Badge>
             <h2 className="text-2xl font-semibold text-foreground">
-              A single home for knowledge, discovery, and community.
+              A directory-first surface for brands, buyers, and browsers.
             </h2>
             <p className="text-sm text-muted-foreground">
-              {SITE_CONFIG.name} brings together publishing, listings, and social bookmarking so teams can move faster
-              and keep their best resources close.
+              {SITE_CONFIG.name} organizes business listings so visitors can compare operators, read context quickly,
+              and move to contact or classified follow-ups without noisy feeds.
             </p>
-            <div className="grid gap-4 sm:grid-cols-3">
-              {highlights.map((item) => (
-                <div key={item.label} className="rounded-lg border border-border bg-secondary/40 p-4">
-                  <div className="text-2xl font-semibold text-foreground">{item.value}</div>
-                  <div className="text-xs text-muted-foreground">{item.label}</div>
-                </div>
-              ))}
-            </div>
+            <p className="text-sm text-muted-foreground">
+              Articles, visuals, profiles, and resources stay available as supporting lanes
+              — useful when you need depth, but never competing with the core listing rhythm.
+            </p>
           </CardContent>
         </Card>
         <div className="space-y-4">
@@ -66,27 +54,6 @@ export default function AboutPage() {
             </Card>
           ))}
         </div>
-      </div>
-
-      <div className="mt-10 grid gap-6 md:grid-cols-3">
-        {mockTeamMembers.map((member) => (
-          <Card key={member.id} className="border-border bg-card transition-transform hover:-translate-y-1">
-            <CardContent className="p-6">
-              <div className="flex items-center gap-3">
-                <Avatar className="h-12 w-12">
-                  <AvatarImage src={member.avatar} alt={member.name} />
-                  <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>
-                </Avatar>
-                <div>
-                  <p className="text-sm font-semibold text-foreground">{member.name}</p>
-                  <p className="text-xs text-muted-foreground">{member.role}</p>
-                </div>
-              </div>
-              <p className="mt-3 text-sm text-muted-foreground">{member.bio}</p>
-              <p className="mt-3 text-xs text-muted-foreground">{member.location}</p>
-            </CardContent>
-          </Card>
-        ))}
       </div>
     </PageShell>
   );

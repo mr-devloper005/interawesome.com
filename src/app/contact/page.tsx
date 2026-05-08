@@ -1,33 +1,8 @@
 import Link from 'next/link'
-import { Building2, Phone, Mail, MapPin, Clock, MessageSquare, ArrowRight, Send } from 'lucide-react'
+import { MessageSquare, ArrowRight, Send } from 'lucide-react'
 import { NavbarShell } from '@/components/shared/navbar-shell'
 import { Footer } from '@/components/shared/footer'
 import { SITE_CONFIG } from '@/lib/site-config'
-import { siteIdentity } from '@/config/site.identity'
-
-const contactMethods = [
-  {
-    icon: Phone,
-    title: 'Call Us',
-    description: 'Speak directly with our support team during business hours.',
-    value: '+1 (555) 123-4567',
-    action: 'tel:+15551234567',
-  },
-  {
-    icon: Mail,
-    title: 'Email Us',
-    description: 'Send us a detailed message and we will respond within 24 hours.',
-    value: siteIdentity.contactEmail,
-    action: `mailto:${siteIdentity.contactEmail}`,
-  },
-  {
-    icon: MapPin,
-    title: 'Visit Us',
-    description: 'Stop by our office for in-person consultations and meetings.',
-    value: '123 Business Ave, Suite 100',
-    action: '#',
-  },
-]
 
 const supportTopics = [
   {
@@ -61,29 +36,7 @@ export default function ContactPage() {
           </p>
         </section>
 
-        {/* Contact Methods */}
-        <section className="mb-12">
-          <div className="grid gap-6 md:grid-cols-3">
-            {contactMethods.map((method) => {
-              const Icon = method.icon
-              return (
-                <a
-                  key={method.title}
-                  href={method.action}
-                  className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1"
-                >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#1d546d]/10 text-[#1d546d] group-hover:bg-[#1d546d] group-hover:text-white transition-colors">
-                    <Icon className="h-6 w-6" />
-                  </div>
-                  <h3 className="mt-4 text-lg font-semibold">{method.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-slate-600">{method.description}</p>
-                  <p className="mt-3 text-sm font-medium text-[#1d546d]">{method.value}</p>
-                </a>
-              )
-            })}
-          </div>
-        </section>
-
+        
         {/* Contact Form & Info */}
         <section className="mb-12 grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
           {/* Contact Form */}
@@ -127,31 +80,8 @@ export default function ContactPage() {
             </form>
           </div>
 
-          {/* Office Hours & Support Topics */}
+          {/* Support Topics */}
           <div className="space-y-6">
-            {/* Office Hours */}
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-              <div className="flex items-center gap-3 mb-4">
-                <Clock className="h-5 w-5 text-[#1d546d]" />
-                <h3 className="text-lg font-semibold">Office Hours</h3>
-              </div>
-              <div className="space-y-2 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-slate-600">Monday - Friday</span>
-                  <span className="font-medium">9:00 AM - 6:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-600">Saturday</span>
-                  <span className="font-medium">10:00 AM - 4:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-600">Sunday</span>
-                  <span className="font-medium">Closed</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Support Topics */}
             <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
               <h3 className="text-lg font-semibold mb-4">Common Topics</h3>
               <div className="space-y-3">
