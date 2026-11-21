@@ -337,17 +337,6 @@ export function DirectoryTaskDetailPage({
                   <p className="text-sm text-slate-600">{location}</p>
                 </div>
               )}
-              {mapEmbedUrl && (
-                <div className="mt-4 overflow-hidden rounded-xl border border-slate-200">
-                  <iframe
-                    src={mapEmbedUrl}
-                    title={`${post.title} map`}
-                    className="h-64 w-full border-0"
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
-                </div>
-              )}
             </section>
 
             {/* FAQ Section */}
