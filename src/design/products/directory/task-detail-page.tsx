@@ -45,27 +45,15 @@ export function DirectoryTaskDetailPage({
 
   const sections = [
     { id: 'about', label: 'About' },
-    { id: 'hours', label: 'Working Hours' },
     { id: 'why-us', label: 'Why Us' },
     { id: 'contact', label: 'Contact' },
     { id: 'location', label: 'Location' },
     { id: 'faq', label: 'FAQ' },
   ]
 
-  const workingHours = [
-    { day: 'Monday', start: '9:00 AM', end: '6:00 PM' },
-    { day: 'Tuesday', start: '9:00 AM', end: '6:00 PM' },
-    { day: 'Wednesday', start: '9:00 AM', end: '6:00 PM' },
-    { day: 'Thursday', start: '9:00 AM', end: '6:00 PM' },
-    { day: 'Friday', start: '9:00 AM', end: '6:00 PM' },
-    { day: 'Saturday', start: '10:00 AM', end: '4:00 PM' },
-    { day: 'Sunday', start: 'Closed', end: '' },
-  ]
-
   const faqs = [
     { question: 'What services do you offer?', answer: 'We provide comprehensive business solutions tailored to your needs.' },
     { question: 'How can I contact you?', answer: 'You can reach us via phone, email, or visit our location during business hours.' },
-    { question: 'What are your operating hours?', answer: 'Our standard hours are Monday-Friday 9AM-6PM, Saturday 10AM-4PM.' },
     { question: 'Do you offer consultations?', answer: 'Yes, we offer free initial consultations to discuss your requirements.' },
     { question: 'What makes you different from competitors?', answer: 'We focus on personalized service, attention to detail, and long-term customer relationships.' },
   ]
@@ -223,33 +211,6 @@ export function DirectoryTaskDetailPage({
               )}
             </section>
 
-            {/* Working Hours Section */}
-            <section id="hours" className="rounded-2xl border border-slate-200 bg-white p-6 scroll-mt-20">
-              <h2 className="flex items-center gap-2 text-xl font-semibold text-slate-950">
-                <Clock className="h-5 w-5 text-slate-400" />
-                Working Hours
-              </h2>
-              <div className="mt-4 overflow-hidden rounded-lg border border-slate-200">
-                <table className="w-full text-sm">
-                  <thead className="bg-slate-50">
-                    <tr>
-                      <th className="px-3 py-2 text-left font-medium text-slate-700">Day</th>
-                      <th className="px-3 py-2 text-left font-medium text-slate-700">Open</th>
-                      <th className="px-3 py-2 text-left font-medium text-slate-700">Close</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {workingHours.map((hour, index) => (
-                      <tr key={index} className="border-t border-slate-100">
-                        <td className="px-3 py-2 text-slate-600">{hour.day}</td>
-                        <td className="px-3 py-2 text-slate-600">{hour.start}</td>
-                        <td className="px-3 py-2 text-slate-600">{hour.end}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </section>
 
             {/* Why Us Section */}
             <section id="why-us" className="rounded-2xl border border-slate-200 bg-white p-6 scroll-mt-20">
